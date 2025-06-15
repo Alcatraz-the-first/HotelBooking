@@ -1,24 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import Top from './Top.js';
+import { useState } from 'react';
+import Body from './Body.js';
+import Login from './Login.js';
+import SignUp from './SignUp.js';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [nav, setNav] = useState(0);
+  return ( // used to display - each function has only 1 return statement
+           //Multiple input in react
+    <>
+      {
+        nav === 0 && <Body setNav1 = {setNav}/> 
+      }
+      {
+        nav === 1 && <Login setNav1 = {setNav}/>
+      }
+      {
+        nav === 2 && <SignUp setNav1 = {setNav}/>
+      }
+    </>
   );
 }
 

@@ -1,0 +1,12 @@
+.sp1 {
+    background-color: rgb(176, 178, 177) ;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* optional: vertical alignment */
+}
+
+.login {
+    font-size: 15px;
+    /* Remove margin-left */
+}
