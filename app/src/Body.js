@@ -3,7 +3,6 @@ import Top from './Top.js';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getHotelsByCity } from './AmadeusAPI';
 import { useNavigate } from 'react-router-dom';
 import './Body.css';
 
@@ -17,12 +16,6 @@ function Body({setNav1,cityCode,setCityCode}){
     }, [cityCode]);
 
     const navigate = useNavigate();
-    
-    // const { data: hotels, isLoading, isError, } = useQuery({
-    //     queryKey: ['hotels', cityCode],
-    //     queryFn: () => getHotelsByCity(cityCode),
-    //     enabled: !!cityCode, // Only fetch when cityCode is not empty
-    // });
     
     const HandleClick = (hotelId) => {
         navigate(`/hotel/${hotelId}`); // ✅ Navigate to hotel details page
@@ -46,17 +39,6 @@ function Body({setNav1,cityCode,setCityCode}){
             <input type="date" placeholder='Check-out'></input>
             <input type="number" placeholder='Number of rooms'></input>
             <button onClick={()=>{butt()}}>Search</button>
-            {/* {
-                d1 && d1.results && (
-                    <ul>
-                    {d1.results.map((hotel) => (
-                        <li>
-                            <div>{hotel.name}</div>
-                        </li>
-                    ))}
-                    </ul>
-                )
-            } */}
             {
                 d1 && d1.results && (
                     <ul>
