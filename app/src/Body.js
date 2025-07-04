@@ -1,15 +1,13 @@
-import react from 'react' ;
 import Top from './Top.js';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import './Body.css';
 
-function Body({setNav1,cityCode,setCityCode}){
+function Body({setNav,cityCode,setCityCode}){
     const [d1, setD1] = useState("");
     useEffect(() => {
-        fetch(`http://localhost:5000/api/hotels/place=${cityCode}`) //Changed from hotels/place=${cityCode}
+        fetch(`http://localhost:5000/api/hotels/${cityCode}`)
             .then(res => res.json())    //rs object is promise . bcoz /api/hotels is an async function
             .then( data => setD1(data))
             .catch(err => console.error('Error fetching hotels:', err));
@@ -32,20 +30,21 @@ function Body({setNav1,cityCode,setCityCode}){
     var ans ;
     return(
         <div>
-            {console.log(d1)} 
-            <Top setNav1={setNav1}/>
-            <input type="text" placeholder='State' onChange={(e)=>{ans=e.target.value}}></input>
-            <input type="date" placeholder='Check-in'></input>
-            <input type="date" placeholder='Check-out'></input>
-            <input type="number" placeholder='Number of rooms'></input>
-            <button onClick={()=>{butt()}}>Search</button>
+            <Top setNav={setNav}/>
+            <div id='Body-search'>
+                <input type="text" placeholder='State' onChange={(e)=>{ans=e.target.value}}></input>
+                <input type="date" placeholder='Check-in'></input>
+                <input type="date" placeholder='Check-out'></input>
+                <input type="number" placeholder='Number of rooms'></input>
+                <button onClick={()=>{butt()}}>Search</button>
+            </div>
             {
                 d1 && d1.results && (
-                    <ul>
+                    <ul id='Body-ul'>
                     {d1.results.map((hotel) => (
-                        <li key={hotel.place_id} onClick={()=> HandleClick(hotel.place_id)}>
-                            <div id='container'>
-                                <div id='img'>
+                        <li key={hotel.place_id} >
+                            <div id='Body-container' onClick={()=> HandleClick(hotel.place_id)}>
+                                <div id='Body-img'>
                                     {
                                         hotel.photos && hotel.photos.length > 0 ? (
                                         <img
@@ -54,14 +53,16 @@ function Body({setNav1,cityCode,setCityCode}){
                                             style={{ width: '250px', height: 'auto', borderRadius: '10px' }}
                                         />
                                         ) : (
-                                        <p>No image available</p>
+                                            <img src='https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
+                                            alt={hotel.name}
+                                            style={{ width: '250px', height: 'auto', borderRadius: '10px' }}
+                                            />
                                         )
                                     }
                                 </div>
-                                <div id='info'>
+                                <div id='Body-info'>
                                     <h1>{hotel.name}</h1>
                                     <h2>{hotel.formatted_address}</h2>
-                                    <p><b>Amenities :</b>{hotel.types.join(', ')}</p>
                                     <p>Rating : {hotel.rating}</p>
                                 </div>
                             </div>

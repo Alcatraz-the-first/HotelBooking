@@ -25,6 +25,6 @@ router.get('/images/:ref', async(req,res) =>{
         console.error('Error fetching image:', error);
         res.status(500).json({ error: 'Failed to fetch image' });
     }
-})
+});
 
 module.exports = router ;

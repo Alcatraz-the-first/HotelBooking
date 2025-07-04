@@ -1,9 +1,9 @@
-ul {
+#Body-ul {
   list-style-type: none;
   padding: 0;
 }
 
-#container {
+#Body-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -17,41 +17,103 @@ ul {
   gap: 20px;
 }
 
-#img img {
+#Body-img img {
   width: 250px;
   height: auto;
   border-radius: 10px;
   object-fit: cover;
 }
 
-#info {
+#Body-info {
   flex: 1;
 }
 
-#info h1 {
+#Body-info h1 {
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-#info h2 {
+#Body-info h2 {
   font-size: 1.1rem;
   color: #333;
   margin-bottom: 8px;
 }
 
-#info p {
+#Body-info p {
   margin: 5px 0;
   font-size: 1rem;
 }
 
+/* Make sure this is in your Body.css and not overridden elsewhere */
+#Body-search input[type="text"],
+#Body-search input[type="date"],
+#Body-search input[type="number"] {
+  border: none;
+  padding: 16px 20px;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+}
+
+#Body-search input:not(:last-child) {
+  border-right: 1px solid #ddd; /* subtle divider between fields */
+}
+
+#Body-search button {
+  background-color: #0074cc; /* your blue */
+  color: #fff;
+  border: none;
+  padding: 16px 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0; /* no border-radius for middle */
+  height: 100%;
+}
+
+#Body-search button:hover {
+  background-color: #005fa3; /* darker blue on hover */
+}
+
+
+#Body-search {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 999px; /* makes the ends rounded */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  padding: 0;
+  max-width: 1000px; /* wider than before */
+  margin: 36px auto;
+  overflow: hidden; /* important: clip inner corners */
+}
+
+
+/* Responsive: allow wrapping on small screens */
 @media (max-width: 768px) {
-  #container {
+  #Body-search {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 18px 8vw 12px 8vw;
+  }
+  #Body-search input,
+  #Body-search button {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  #Body-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  #img img {
+  #Body-img img {
     width: 90%;
   }
 }

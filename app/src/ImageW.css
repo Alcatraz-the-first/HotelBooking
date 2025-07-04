@@ -1,0 +1,73 @@
+#ImageW-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 350px;
+    margin: 20px auto;
+}
+
+#ImageW-image {
+    width: 250px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: #f9f9f9;
+}
+
+#ImageW-image img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#ImageW-lbutton, #ImageW-rbutton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0.5;
+}
+
+#ImageW-lbutton:hover, #ImageW-rbutton:hover {
+    opacity: 1;
+}
+
+#ImageW-lbutton {
+    left: 10px;
+}
+
+#ImageW-rbutton {
+    right: 10px;
+}
+
+/* Triangle styles */
+#ImageW-lbutton button, #ImageW-rbutton button {
+    width: 0;
+    height: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+#ImageW-lbutton button {
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 25px solid #333;
+}
+
+#ImageW-rbutton button {
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 25px solid #333;
+}

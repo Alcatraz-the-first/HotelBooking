@@ -1,0 +1,39 @@
+1/7/25 - 
+
+1.  Made the ImageW file . Had problem with the useEffect and setInterval . Didnt have a return object earlier in the useEffect , 
+    hence a new setInterval object was being created every time one clicked on the next or previous button .
+    As soon as we added a return statement with a clearInterval object , the setInterval object was being cleared as soon as 5s
+    passed , but now the confusion remained as to if one clicked the next/previous button in between , how would the ongoing set object
+    be cleared , and the new object be set ! Soln - so apparently that is what the [pos] , does in useEffect . It clears the prev set
+    object and re-runs the script inside , waiting for 5 secs .
+
+2.  Made the css for ImageW using copilot . Although it feels like the buttons are fixed and will be having problem once they are shifted
+    or scaled , I think we will look into it later (ALSO DONT FORGET TO OPEN A POP SHOWING THE IMAGES IN FULL WINDOW ONCE CLICKED ON) .
+
+3.  Learned an important lesson that css is applied globally in the folder so , keep the names of all the different elements differently .
+
+4.  We used localStorage in the Route.js so as to store the variable in locoal storage , becuase we faced the problem ... After reloading the 
+    hotel details page , the useState variable of the setCityCode was being remounted , which led it to being set to the initialised value again .
+    
+
+2/7/25 -
+
+1.  Made some changes to the Top , added an image instead of the plain-ol LADS text .
+
+2.  Upon doing this change , when trying to Login from the HotelDetails.js page , we were getting an error like , setNav1 is not a function .
+    Which then I solved by renaming setNav1 to setNav everywhere in the entire project . After which came the problem thus stated .
+    Solution - Well AI suggests that we either make a new page for login and all , or if we prefer a login pop-up style , we should create modals ,
+    becuase in HotelDetails , we dont explicitly render the Login/Signup page , whereas in App.js we did , which then called the Body.js , Login.js
+    and the rest . (PS : Now when trying to go back to the search page by clicking on the back button on browser , from HotelDetails page , it instead
+    of taking to the intended Body page , takes us to the SignUp page instead 😭 - also just noticed , this only happens when clicking on login button 
+    whilst in the HotelDetails page , otherwise it just takes back as intended)
+
+6/7/25 - 
+1.  Made the schema for user's database. Defined all the fields.
+2.  Created a pre('save') function that runs just before saving the document .
+
+
+async fun1(){    
+    await fun()
+    await fun() -> fun() was declared as async
+}

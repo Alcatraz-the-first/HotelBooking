@@ -2,14 +2,14 @@ import React from 'react' ;
 import './Top.css';
 import NavButton from './NavButton.js';
 
-function Top({setNav1}){
+function Top({setNav}){
     var var1 = 0 ;
     return(
-        <div className="sp1">
-            <b>Lads</b>
-            <div className="login">
-                English &nbsp;&nbsp;&nbsp;
-                <NavButton setNav1={setNav1} var1={1} buttonName={"Login"}/>
+        <div className="Top-sp1">
+            <img src="/LADSlogo2.png" alt="Logo" className="Top-logo" />
+            <div className="Top-login">
+                <span>English</span>
+                <NavButton setNav={setNav} var1={1} buttonName={"Login"}/>
             </div>
         </div>
     );

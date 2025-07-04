@@ -1,7 +1,7 @@
 import react from 'react';
 import NavButton from './NavButton.js' ;
 
-function SignUp({setNav1}){
+function SignUp({setNav}){
     return(
         <div>
             Sign Up
@@ -20,7 +20,7 @@ function SignUp({setNav1}){
                 </button>
             </div>
             <div>
-                <NavButton setNav1={setNav1} var1={0} buttonName={"Home"}/>
+                <NavButton setNav={setNav} var1={0} buttonName={"Home"}/>
             </div>
         </div>
     );

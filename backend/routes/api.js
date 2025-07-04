@@ -7,6 +7,9 @@ router.get('/hotels/:place',async (req,res)=>{
     try{
         const place = req.params.place ;
         const response = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotel+in+${place}&key=${process.env.GOOGLE_API_KEY}`);
+        if(!response){
+            return res.status(404).json({ error: 'No hotels found for the specified place' });
+        }
         const data = await response.json();
         res.json(data) ;
     }catch(error){
