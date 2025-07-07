@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const JWT = require('jsonwebtoken');
+require('dotenv').config();
 
 router.use(express.json());
 
@@ -36,6 +38,12 @@ router.post('/login', async(req,res) => {
         if(!(await user.comparePassword(password))){
             return res.status(400).json({ message: "Invalid credentials" });
         }
+        const token = JWT.sign({id:user._id},process.env.JWT_SECRET, {expiresIn : '1min'});
+        res.cookie('token' , token ,{
+            httpOnly: true ,
+            secure:true ,
+            sameSite: 'strict'
+        });
         res.status(200).json({message : "Login successful"}); ;
     }catch(err){
         console.error(err);
