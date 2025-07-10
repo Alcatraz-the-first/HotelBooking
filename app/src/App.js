@@ -1,26 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import Top from './Top.js';
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Body from './Body.js';
-import Login from './Login.js';
-import SignUp from './SignUp.js';
+import HotelDetails from './HotelDetails.js';
+import LoginPage from './LoginPage.js';
+import SignUpPage from './SignUpPage.js';
+import PaymentPage from './PaymentPage.js';
+import { useState } from 'react';
 
-function App({setCityCode, cityCode, setNav, nav}) {
-  return ( // used to display - each function has only 1 return statement
-           //Multiple input in react
-    <>
-      {
-        nav === 0 && <Body setNav = {setNav} setCityCode = {setCityCode} cityCode = {cityCode}/> 
-      }
-      {
-        nav === 1 && <Login setNav = {setNav}/>
-      }
-      {
-        nav === 2 && <SignUp setNav = {setNav}/>
-      }
-    </>
+export default function App() {
+  const [isLoggedIn , setIsLoggedIn] = useState(false);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Body isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/hotel/:id" element={<HotelDetails isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}/>
+        <Route path="/login" element={<LoginPage isLoggedIn={isLoggedIn}/> }/>
+        <Route path="/signup" element={<SignUpPage/>}/>
+        <Route path='/payment' element={<PaymentPage/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;

@@ -32,6 +32,82 @@
 1.  Made the schema for user's database. Defined all the fields.
 2.  Created a pre('save') function that runs just before saving the document .
 
+7/7/25 -
+ 1. Created an authentication token , along with a function to check for the authentication token . But now what bothers me is ...
+    If I am unable to know whether that the user is authenticated in the frontend , how will I be able to tell them whether that the 
+    user is authenticated or not , thus be unable to change the frontend accordingly !
+    SOLN -
+    This randomly struck me ... why not create a route that solely check whether the user is authenticated or not , which will then
+    help me decide what to display on the frontend ! But this arose another question ... why do we need the authenticateToken middleware
+    in the first place ? Well I was kinda close , but this is why acc to copilot ...
+    The dedicated route only tells the frontend whether the user is logged in and authenticated or not . But those
+    protected routes that requires the user to be logged in , wont know ... like while booking and all !
+    ALSO the dedicated route will be used in useEffect that will only be run once every page gets mounted , more like useEffect({code},[])
+
+2.  Created a logout route too ! It just simply removes the cookies !
+
+3.  BUT ,BUT ,BUT - I think I found an error in this too ... suppose in the inner pages , like hotelDetails , where the login is on a
+    pop-up , and no page mounting , the page will be checked for login only once , in the beginning ,and what if the user logs in between ?
+    How will the frontend know that a user has logged in already , and that we no longer need to show the login button ?
+    Do we keep a useState variable that checks after each backend fetch , that whether the user is logged in or not ,and then pass that useState
+    variable in the dependency array of the useEffect ?? ( Or am i thinking too much ?!)
+    I mean arent we storing whether the user is logged in or not in a useState variable itself ? So I guess we pass that same useState variable in
+    the same useEffect that fetches when user clicks on login button (Or just change another variable , which then later changes the earlier 
+    useState variable !?)
+    Anyways ciao for tonight , see ya in the morning nigga ! :D
+
+8/7/25 -
+1.  DEKHO BOHOT CHUTIYAPA HUA HAI INSHORT YE SAB ADD KRNA PADA TAAKI KAAM KARE - 
+    a)  const cookieParser = require('cookie-parser') ;
+    b)  app.use(cors({origin: 'http://localhost:3000', // <-- your React app's URL
+    c)  credentials: true}));
+        res.cookie('token' , token ,{
+            httpOnly: true , secure: false, // Set to true if using HTTPS
+            sameSite: 'lax' // or 'none' if using cross-origin requests});
+    d)  fetch('http://localhost:5000/api/check',{credentials: 'include'})
+
+10/7/25 -
+1.  Well first we will be making different pages for login and signup , when accessing from the home page . And a pop-up from anyother pages .
+    (PS - I will be trying to achieve , that I somehow be able to achieve the functionality to render the same component of login to open up as
+    as new page when clicked on home page and as a pop on any other page !!!)
+
+    1a. Moved the isLoggedIn useState variable from Body.js to a higher level , that is to Routes ,because we need the access to that variable in 
+        all the routes !
+    1b. *** IMP CHANGES *** -   i. Now signup page wont redirect to login page , it will directly redirect to the last page before logging in
+                                ii. I will create components for both page redirection and pop up . We will either entirely use pop-up or pages ,
+                                    not both (IDK we will have decide together !)
+
+2. Today we learned ... WHEN U USE COOKIES HTTPONLY , YOU MUST , AND I SRSLY MEAN , YOU MUST include {credentials: 'include'} INSIDE FETCH
+    AFTER THE MENTIONING THE URL .
+
+3.  We were stuck in a loop for a long while . As soon as we were logging in , we were being logged out ! The problem was because of a state variable 
+    we were using to call the logout functionality from the backend . It was being called automatically , both when it was being mounted , as well 
+    as when its value was being changed ! But we only wanted the useEffect to be called only when the state variable's value changed , and not 
+    whenever it was being mounted or unmounted !
+    SOLN - Instead of calling the fetch inside a useEffect , we called it inside a function (which we never did before !).
+    (PS: useRef is react hook that has a field called .current , the value of which persists on any number of re-renders , until we change it manually!)
+
+10/7/25 -
+1.  Well earlier cityCode was initialized in the app file , but now we will try to bring it down to the body level .
+    So , did the following ...
+        a.  Brought cityCode state variable from app.js to body.js .
+        b.  Introduced a flag state variable , which will only change when search button is clicked .
+        c.  Now cityCode variable will be changed in place in the input field itself .
+    So whats the net result we achieved from all this ? Our input was vanishing as soon as we went to another page or reloaded the page , but now it doesnt !
+
+2.  We will be making a payment division in the hotel details page , which on clicking will redirect us to the payment page . The payment division
+    will contain the option to select number of rooms , duration of stay and the payment button . The payment page will contain nothing but a QR code :D
+
+11/7/25 -
+
+*** 
+    Things to add -
+    1.  Clicking on the pic will view it in full screen mode.
+    2.  Profile button in place of logout , that will have - profile , show booking and logout .
+    3.  Add footer.
+    4.  Add map in hoteldetails page .
+    5.  Make sure before the user is redirected to the payment page , he is logged in and has basic details about the user (here their full name and DOB).
+***
 
 async fun1(){    
     await fun()

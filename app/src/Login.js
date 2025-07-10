@@ -19,9 +19,14 @@ function Login({setNav}){
                 email: mail,
                 password: pass
             }),
+            credentials: 'include' // Include credentials to send cookies
         })
         .then(res => res.json())
-        .then(res => {setData(e => res)})
+        .then(res => {
+            if(res && res.message === 'Login successful'){
+                setData(e => res);
+            }else alert(res.message);
+        })
         .catch(err => console.error('Error fetching login data:', err));
     },[flag]);
     useEffect(() => {

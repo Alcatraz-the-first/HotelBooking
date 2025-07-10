@@ -25,6 +25,7 @@
   margin-right: 18px;
   object-fit: contain;
   display: block;
+  cursor: pointer;
 }
 
 .Top-login {

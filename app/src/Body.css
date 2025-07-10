@@ -46,13 +46,39 @@
 
 /* Make sure this is in your Body.css and not overridden elsewhere */
 #Body-search input[type="text"],
-#Body-search input[type="date"],
-#Body-search input[type="number"] {
+#Body-search input[type="date"] {
   border: none;
   padding: 16px 20px;
   outline: none;
   flex: 1;
   font-size: 1rem;
+}
+
+#Body-search select {
+  border: none;
+  padding: 16px 20px;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+  background: #fff;
+  margin-left: 0; /* Remove inline margin if present */
+  border-right: 1px solid #ddd;
+  appearance: none;
+  /* Optional: add a dropdown arrow for consistency */
+  background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='16' height='16' viewBox='0 0 16 16' fill='gray' xmlns='http://www.w3.org/2000/svg'><path d='M4 6l4 4 4-4' stroke='gray' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px 18px;
+}
+
+#Body-search select {
+  text-align: center;
+  text-align-last: center; /* For most modern browsers */
+}
+
+#Body-search select:focus {
+  border-right: 1px solid #1976d2;
+  background: #fff;
 }
 
 #Body-search input:not(:last-child) {

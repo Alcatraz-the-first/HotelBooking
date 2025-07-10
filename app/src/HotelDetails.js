@@ -1,12 +1,38 @@
 import { useParams } from 'react-router-dom';
 import {useEffect , useState} from 'react' ;
+import { useNavigate, useLocation } from 'react-router-dom';
 import ImageWindows from './ImageW.js';
 import './HotelDetails.css';
 import Top from './Top.js';
 
-export default function HotelDetails({setNav}){
+export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
+    const navigate = useNavigate();
+    const location = useLocation();
+    
     const { id } = useParams();
     const [hotel , setHotel] = useState("");
+    const [checkIn,setCheckIn] = useState(() => sessionStorage.getItem('checkIn') || '');
+    const [checkOut,setCheckOut] = useState(() => sessionStorage.getItem('checkOut') || '');
+    const [numberOfRooms, setNumberOfRooms] = useState(() => sessionStorage.getItem('numberOfRooms') || '');
+
+    const today = new Date().toISOString().split('T')[0] ;
+    const redirectPath = location.pathname + location.search;
+    const imageArray = hotel && hotel.result && hotel.result.photos ? hotel.result.photos.map((photo) => photo.photo_reference) : [] ;
+
+    useEffect(() => {
+        fetch('http://localhost:5000/api/check',{credentials: 'include'})
+            .then(res => res.json())
+            .then(res => {
+                if(res && res.authenticated){
+                    console.log("User is authenticated with ID:", res.userId);
+                    setIsLoggedIn(e => true);
+                }else{
+                    console.log("User is not authenticated");
+                    setIsLoggedIn(e => false);
+                }
+            })
+            .catch(err => {console.error('Error checking authentication:', err);setIsLoggedIn(e => false);});
+    },[]);
     useEffect(() => {
         fetch(`http://localhost:5000/api/details/${id}`)
             .then(res => res.json())
@@ -14,11 +40,14 @@ export default function HotelDetails({setNav}){
             .catch(err => console.error('Error fetching hotel details:', err));
     },[]);
     
-    const imageArray = hotel && hotel.result && hotel.result.photos ? hotel.result.photos.map((photo) => photo.photo_reference) : [] ;
+    function handlePayment(){
+        navigate(`/payment`);
+    }
 
     return(
         <div>
-            <Top setNav={setNav}/>
+            {console.log('isLoggedIn:', isLoggedIn)}
+            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={redirectPath} />
             {
                 hotel && hotel.result && (
                     <>
@@ -42,6 +71,17 @@ export default function HotelDetails({setNav}){
                                 <p>Rating : {hotel.result.rating}</p>
                                 <a href={hotel.result.url} target='_blank'>Google Map Link</a>
                             </div>
+                        </div>
+                        <div id='HotelDetails-payment'>
+                            <input type="date" placeholder='Check-in' min={today} value={checkIn} onChange={(e)=> {setCheckIn(checkIn => e.target.value)}}></input>
+                            <input type="date" placeholder='Check-out' min={checkIn || today} value={checkOut} onChange={(e)=> {setCheckOut(checkOut => e.target.value)}}></input>
+                            <select value={numberOfRooms} onChange={e => setNumberOfRooms(e.target.value)} style={{ marginLeft: "10px" }}>
+                                <option value="">Number of rooms</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <button onClick={()=>{handlePayment()}}>Pay Now</button>
                         </div>
                         <div id='HotelDetails-review'>
                             <ul>
