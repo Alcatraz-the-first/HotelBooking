@@ -107,6 +107,9 @@
     3.  Add footer.
     4.  Add map in hoteldetails page .
     5.  Make sure before the user is redirected to the payment page , he is logged in and has basic details about the user (here their full name and DOB).
+    6.  Also the payment page is incomplete !
+    7.  While typing in the location at the search bar , suggestions should be provided !
+    8.  Setup OAuth for google .
 ***
 
 async fun1(){    
