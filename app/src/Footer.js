@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Footer.css';
 
 export default function Footer(){
@@ -25,10 +26,18 @@ export default function Footer(){
                 <div id='social-media'>
                     <span>Follow us on</span>
                     <div className='social-icons'>
-                        <i className="fa-brands fa-facebook"></i>
-                        <i className="fa-brands fa-instagram"></i>
-                        <i className="fa-brands fa-twitter"></i>
-                        <i className="fa-brands fa-github"></i>
+                        <a href="https://www.facebook.com/lekharshav.sengupta/" target="_blank" rel="noopener noreferrer">
+                            <i className="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nihilistic__goose/" target="_blank" rel="noopener noreferrer">
+                            <i className="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/Krustypats" target="_blank" rel="noopener noreferrer">
+                            <i className="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="https://github.com/AdityaChowdhury15" target="_blank" rel="noopener noreferrer">
+                            <i className="fa-brands fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </div>

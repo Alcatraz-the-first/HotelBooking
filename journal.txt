@@ -104,7 +104,6 @@
     Things to add -
     1.  Clicking on the pic will view it in full screen mode.
     2.  Profile button in place of logout , that will have - profile , show booking and logout .
-    3.  Add footer.
     4.  Add map in hoteldetails page .
     5.  Make sure before the user is redirected to the payment page , he is logged in and has basic details about the user (here their full name and DOB).
     6.  Also the payment page is incomplete !

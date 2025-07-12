@@ -1,4 +1,5 @@
 import Top from './Top.js';
+import Footer from './Footer.js';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
@@ -109,6 +110,12 @@ function Body({isLoggedIn,setIsLoggedIn}){
                     </ul>
                 )
             }
+            {
+                (!d1 || !d1.results || d1.results.length === 0) && (
+                    <div style={{height: '35vh'}}></div>
+                )
+            }
+            <Footer />
         </div>
     );
 }

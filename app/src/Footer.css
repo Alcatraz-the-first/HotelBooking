@@ -1,9 +1,12 @@
 #footer {
   background: #222c3a;
   box-shadow: 0 2px 16px rgba(25, 118, 210, 0.13);
-  border-radius: 18px 18px 0 0;
-  width: 100%;
+  border-radius: 0 0 0 0;
+  width: 100%;                /* Use 100% to avoid horizontal scroll */
   min-width: 0;
+  left: unset;
+  bottom: unset;
+  position: static;            /* Stick to bottom */
   margin: 0;
   padding: 36px 32px 24px 32px;
   display: flex;
@@ -14,7 +17,6 @@
   border-top: 3px solid #0d47a1;
   box-sizing: border-box;
   z-index: 100;
-  /* REMOVE position, left, bottom */
 }
 
 #footer h4 {

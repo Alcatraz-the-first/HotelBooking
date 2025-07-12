@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import ImageWindows from './ImageW.js';
 import './HotelDetails.css';
 import Top from './Top.js';
+import Footer from './Footer.js';
 
 export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
     const navigate = useNavigate();
@@ -46,7 +47,6 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
 
     return(
         <div>
-            {console.log('isLoggedIn:', isLoggedIn)}
             <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={redirectPath} />
             {
                 hotel && hotel.result && (
@@ -105,6 +105,7 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
                     </>
                 )
             }
+            <Footer />
         </div>
     );
 }

@@ -116,6 +116,9 @@
   overflow: hidden; /* important: clip inner corners */
 }
 
+#body-no-results {
+  height: 100%;
+}
 
 /* Responsive: allow wrapping on small screens */
 @media (max-width: 768px) {
