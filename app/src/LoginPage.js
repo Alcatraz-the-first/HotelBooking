@@ -14,7 +14,7 @@ export default function LoginPage({isLoggedIn}){
     const redirectPath = new URLSearchParams(location.search).get('redirect') || '/' ;
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/login',{
+        fetch('http://localhost:5000/auth/login',{
             method: 'POST' ,
             headers: {
                 'Content-Type': 'Application/json',

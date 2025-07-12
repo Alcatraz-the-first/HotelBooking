@@ -33,7 +33,7 @@ function Body({isLoggedIn,setIsLoggedIn}){
     },[numberOfRooms]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/check',{credentials: 'include'}) // Include credentials to send cookies
+        fetch('http://localhost:5000/auth/check',{credentials: 'include'}) // Include credentials to send cookies
             .then(res => res.json())
             .then(res => {
                 if(res && res.authenticated){

@@ -14,7 +14,7 @@ export default function SignUpPage({setNav}){
     const redirectPath = new URLSearchParams(location.search).get('redirect') || '/' ;
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/signup',{
+        fetch('http://localhost:5000/auth/signup',{
             method: 'POST',
             headers:{
                 'Content-Type': 'Application/json'

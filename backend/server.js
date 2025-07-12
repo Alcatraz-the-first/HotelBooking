@@ -14,9 +14,7 @@ app.use(express.json()) ;
 app.use(cookieParser()) ;
 
 app.use('/api', require('./routes/api'));
-app.use('/api', require('./routes/images'));
-app.use('/api', require('./routes/hotelDetails')) ;
-app.use('/api', require('./routes/auth')) ;
+app.use('/auth', require('./routes/auth')) ;
 
 
 // Connect to MongoDB

@@ -21,7 +21,7 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
     const imageArray = hotel && hotel.result && hotel.result.photos ? hotel.result.photos.map((photo) => photo.photo_reference) : [] ;
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/check',{credentials: 'include'})
+        fetch('http://localhost:5000/auth/check',{credentials: 'include'})
             .then(res => res.json())
             .then(res => {
                 if(res && res.authenticated){

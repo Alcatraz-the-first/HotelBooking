@@ -10,7 +10,7 @@ function Top({isLoggedIn,setIsLoggedIn,redirectPath}){
     }
     function handleLogout(){
         if(isLoggedIn){
-            fetch('http://localhost:5000/api/logout',{credentials: 'include'}) // Include credentials to send cookies
+            fetch('http://localhost:5000/auth/logout',{credentials: 'include'}) // Include credentials to send cookies
                 .then(res => res.json())
                 .then(res => {
                     if(res && res.message ==='Logout successful'){
