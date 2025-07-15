@@ -1,12 +1,12 @@
-import { useParams } from 'react-router-dom';
 import {useEffect , useState} from 'react' ;
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import ImageWindows from './ImageW.js';
-import './HotelDetails.css';
 import Top from './Top.js';
 import Footer from './Footer.js';
+import './HotelDetails.css';
+import { set } from 'mongoose';
 
-export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
+export default function HotelDetails({isLoggedIn,setIsLoggedIn,isProfileUpdated,setIsProfileUpdated}) {
     const navigate = useNavigate();
     const location = useLocation();
     
@@ -15,6 +15,8 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
     const [checkIn,setCheckIn] = useState(() => sessionStorage.getItem('checkIn') || '');
     const [checkOut,setCheckOut] = useState(() => sessionStorage.getItem('checkOut') || '');
     const [numberOfRooms, setNumberOfRooms] = useState(() => sessionStorage.getItem('numberOfRooms') || '');
+    const [price, setPrice] = useState(() => Number(localStorage.getItem(`price${id}`) || 0));
+    const [rooms, setRooms] = useState(() => Number(localStorage.getItem(`rooms${id}`) || 0));
 
     const today = new Date().toISOString().split('T')[0] ;
     const redirectPath = location.pathname + location.search;
@@ -31,6 +33,7 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
                     console.log("User is not authenticated");
                     setIsLoggedIn(e => false);
                 }
+                if(!isLoggedIn) setIsProfileUpdated(e => false);
             })
             .catch(err => {console.error('Error checking authentication:', err);setIsLoggedIn(e => false);});
     },[]);
@@ -40,14 +43,65 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
             .then(data => setHotel(data))
             .catch(err => console.error('Error fetching hotel details:', err));
     },[]);
+    useEffect(() => {
+        if(hotel && hotel.result && rating !== "Not Available" && price === 0) {
+            const newPrice = getPrice(hotel.result.rating);
+            setPrice(newPrice);
+            localStorage.setItem(`price${id}`, newPrice);
+        }
+    }, [hotel]);
+    useEffect(() => {
+        if(hotel && hotel.result && rating !== "Not Available" && rooms === 0) {
+            const newRooms = getRooms(hotel.result.rating);
+            setRooms(newRooms);
+            localStorage.setItem(`rooms${id}`, newRooms);
+        }
+    }, [hotel]);
+    useEffect(() => {
+        sessionStorage.setItem('checkIn', checkIn);
+    },[checkIn]);
+    useEffect(() => {
+        sessionStorage.setItem('checkOut', checkOut);
+    },[checkOut]);
+    useEffect(() => {
+        sessionStorage.setItem('numberOfRooms', numberOfRooms);
+    },[numberOfRooms]);
     
+    function checkHandlePayment(){
+        if(!isLoggedIn){
+            alert("Please login to continue");
+            return false ;
+        }else if(!checkIn || !checkOut || !numberOfRooms){
+            alert("Please fill all the fields before proceeding to payment");
+            return false ;
+        }else if(!isProfileUpdated){
+            alert("Please update your profile before proceeding to payment");
+            return false ;
+        }
+        return true ;
+    }
     function handlePayment(){
-        navigate(`/payment`);
+        if(checkHandlePayment()) navigate(`/payment/${id}`);
+    }
+    function getPrice(x){
+        var p ;
+        if(x>3.5) p = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000 ;
+        else if(x>2.5) p = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000 ;
+        else p = Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000 ;
+        return p ;
+    }
+    function getRooms(x){
+        var r;
+        if(x>3.5) r = Math.floor(Math.random() * (15 - 5 + 1)) + 5 ;
+        else if(x>2.5) r = Math.floor(Math.random() * (20 - 10 + 1)) + 10 ;
+        else r = Math.floor(Math.random() * (10 - 5 + 1)) + 5 ;
+        return r ;
     }
 
+    const rating = hotel && hotel.result && hotel.result.rating ? hotel.result.rating : "Not Available" ;
     return(
         <div>
-            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={redirectPath} />
+            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={redirectPath}/>
             {
                 hotel && hotel.result && (
                     <>
@@ -73,6 +127,10 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn}) {
                             </div>
                         </div>
                         <div id='HotelDetails-payment'>
+                            <div id="HotelDetails-payment-info">
+                                <span>Price: ₹{price}</span>
+                                <span>Rooms Available: {rooms}</span>
+                            </div>
                             <input type="date" placeholder='Check-in' min={today} value={checkIn} onChange={(e)=> {setCheckIn(checkIn => e.target.value)}}></input>
                             <input type="date" placeholder='Check-out' min={checkIn || today} value={checkOut} onChange={(e)=> {setCheckOut(checkOut => e.target.value)}}></input>
                             <select value={numberOfRooms} onChange={e => setNumberOfRooms(e.target.value)} style={{ marginLeft: "10px" }}>

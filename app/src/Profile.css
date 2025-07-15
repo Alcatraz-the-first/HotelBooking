@@ -1,0 +1,81 @@
+.profile-container {
+  max-width: 420px;
+  margin: 48px auto 32px auto;
+  background: #f7fafd;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(25, 118, 210, 0.10);
+  padding: 32px 28px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.profile-container h1 {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 28px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.profile-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 22px;
+  gap: 0;
+  width: 100%;
+}
+
+.profile-row span {
+  flex: 0 0 170px;           /* Fixed width for label, increases with input size */
+  font-size: 1.5rem;         /* Larger font for label */
+  color: #333;
+  font-weight: 700;
+  text-align: right;
+  margin-right: 18px;
+}
+
+.profile-row input {
+  flex: 1 1 auto;            /* Input takes remaining space */
+  padding: 18px 26px;
+  border: 1.5px solid #90caf9;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  background: #fff;
+  transition: border 0.18s;
+  min-width: 0;
+}
+
+.profile-row input:focus {
+  border-color: #1976d2;
+  outline: none;
+}
+
+#profile-save {
+  width: 160px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  transition: background 0.18s;
+  margin: 18px auto 0 auto;
+  display: block;
+}
+
+#profile-save:hover {
+  background: #0d47a1;
+}
+
+@media (max-width: 600px) {
+  .profile-container {
+    max-width: 98vw;
+    padding: 18px 4vw;
+  }
+  .profile-row span {
+    min-width: 70px;
+    font-size: 1rem;
+  }
+}

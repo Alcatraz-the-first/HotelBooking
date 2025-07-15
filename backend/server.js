@@ -15,6 +15,8 @@ app.use(cookieParser()) ;
 
 app.use('/api', require('./routes/api'));
 app.use('/auth', require('./routes/auth')) ;
+app.use('/booking', require('./routes/booking'));
+app.use('/profile', require('./routes/profile')) ;
 
 
 // Connect to MongoDB

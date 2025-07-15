@@ -102,14 +102,19 @@
 
 *** 
     Things to add -
-    1.  Clicking on the pic will view it in full screen mode.
-    2.  Profile button in place of logout , that will have - profile , show booking and logout .
-    4.  Add map in hoteldetails page .
-    5.  Make sure before the user is redirected to the payment page , he is logged in and has basic details about the user (here their full name and DOB).
-    6.  Also the payment page is incomplete !
-    7.  While typing in the location at the search bar , suggestions should be provided !
-    8.  Setup OAuth for google .
+    1.  Setup OAuth for google .
+    2.  Top bar styling
+    3.  Profile Page - redo
+    4.  Search bar styling
+    5.  About Page
 ***
+
+15/7/25 -
+1.  Today we learned that ...
+    In React, the return inside useEffect runs in 2 cases:
+    1.Component unmounts - React calls the cleanup to stop side effects.
+    2.Before re-running the effect - If any dependency (pos in your case) changes:
+    React runs the cleanup from the previous effect.Then it runs the effect body again with the new dependencies.
 
 async fun1(){    
     await fun()

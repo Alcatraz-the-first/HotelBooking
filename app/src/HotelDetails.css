@@ -121,6 +121,26 @@ body {
     border-radius: 8px;
 }
 
+#HotelDetails-payment-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 18px;
+}
+
+#HotelDetails-payment-info span {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1976d2;
+}
+
+#HotelDetails-payment-info span:last-child {
+    color: #333;
+    font-weight: 500;
+}
+
 #HotelDetails-payment {
     max-width: 900px;
     margin: 0 auto 32px auto;

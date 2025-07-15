@@ -57,4 +57,17 @@ router.get('/details/:id', async(req,res)=> {
     }
 });
 
+router.get('/autocomplete/:text', async (req,res) => {
+    try{
+        const text = req.params.text ;
+        if(!text) return res.status(400).json({ error: 'Search text is required' });
+        const response = await fetch(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${text}&location=20.5937,78.9629&radius=3214&key=${process.env.GOOGLE_API_KEY}`);
+        const data = await response.json();
+        res.json(data) ;
+    }catch(err){
+        console.error('Error fetching autocomplete suggestions:', err);
+        res.status(500).json({ error: 'Failed to fetch autocomplete suggestions' });
+    }
+});
+
 module.exports = router;

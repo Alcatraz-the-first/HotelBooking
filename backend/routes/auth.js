@@ -6,9 +6,6 @@ const authenticateToken = require('../middlewares/auth');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
-router.use(cookieParser());
-router.use(express.json());
-
 router.post('/signup' , async (req,res) => {
     try{
         const {email , password } = req.body;
