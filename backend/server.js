@@ -8,7 +8,8 @@ const app = express() ;
 const port = process.env.PORT ;
 app.use(cors({
   origin: 'https://lads-nt69.onrender.com', // <-- your React app's URL
-  credentials: true
+  credentials: true,
+  optionsSuccessStatus: 200 // For legacy browser support
 }));
 app.use(express.json()) ;
 app.use(cookieParser()) ;

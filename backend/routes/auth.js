@@ -27,8 +27,8 @@ router.post('/signup' , async (req,res) => {
         const token = JWT.sign({id:newUser._id},process.env.JWT_SECRET, {expiresIn : '1h'});
         res.cookie('token' , token ,{
             httpOnly: true ,
-            secure: false, // Set to true if using HTTPS
-            sameSite: 'lax',
+            secure: true, // Set to true if using HTTPS
+            sameSite: 'none',
             path: '/' // or 'none' if using cross-origin requests
         });
         res.status(201).json({ message: "User created successfully"}) ;
@@ -57,8 +57,8 @@ router.post('/login', async(req,res) => {
         const token = JWT.sign({id:user._id},process.env.JWT_SECRET, {expiresIn : '1h'});
         res.cookie('token' , token ,{
             httpOnly: true ,
-            secure: false, // Set to true if using HTTPS
-            sameSite: 'lax',
+            secure: true, // Set to true if using HTTPS
+            sameSite: 'none',
             path: '/' // or 'none' if using cross-origin requests
         });
         console.log(profile_check);
@@ -74,8 +74,8 @@ router.get('/logout' , authenticateToken , async (req,res,next) => {
         console.log('Inside logout route');
         res.clearCookie('token',{
             httpOnly: true,
-            secure: false,
-            sameSite: 'lax',
+            secure: true,
+            sameSite: 'none',
             path: '/'
         });
         res.status(200).json({ message: "Logout successful" });
