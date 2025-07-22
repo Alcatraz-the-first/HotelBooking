@@ -9,7 +9,7 @@ export default function Footer(){
             <div id='footer-col1'>
                 <h4>USEFUL LINKS</h4>
                 <ul>    
-                    <li onClick={()=>{navigate(`/`)}}>About</li>
+                    <li onClick={()=>{navigate(`/about`)}}>About</li>
                     <li onClick={()=>{navigate('/')}}>Home</li>
                     <li>Our Other Works</li>
                 </ul>

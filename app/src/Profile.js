@@ -6,8 +6,9 @@ import './Profile.css';
 
 export default function Profile({isLoggedIn, setIsLoggedIn , setIsProfileUpdated}) {
     const navigate = useNavigate();
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [firstName, setFirstName] = useState('Not Set');
+    const [lastName, setLastName] = useState('Not Set');
+    const [editor,setEditor]=useState('false');
 
     useEffect(() => {
             fetch('http://localhost:5000/auth/check',{credentials: 'include'}) // Include credentials to send cookies
@@ -63,18 +64,44 @@ export default function Profile({isLoggedIn, setIsLoggedIn , setIsProfileUpdated
     }
     return(
         <div>
-            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={''}/>
+            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={''} setIsProfileUpdated={setIsProfileUpdated}/>
             <div className='prfile-container'>
                 <h1>Profile Page</h1>
                 <div className='profile-save'>
-                    <span>First Name: </span>
-                    <input type="text" placeholder='First Name' onChange={(e) => {setFirstName(res=>e.target.value)}} value={firstName} />
-                </div>
-                <div className='profile-save'>
-                    <span>Last Name: </span>
-                    <input type="text" placeholder='Last Name' onChange={(e) => {setLastName(res => e.target.value)}} value={lastName} />
-                </div>
-                <button id='profile-save' onClick={() => {if(firstName || lastName){handleSave()}}}>Save Changes</button>
+                    {editor === "false" ? (
+                        <span>First Name: {firstName}</span>
+                    ) : (
+                        <label>
+                        Enter First Name :
+                        <input
+                            type="text"
+                            className="profile-input"
+                            placeholder="Enter First Name"
+                            onChange={(e) => setFirstName(e.target.value)}
+                            value={firstName}
+                        />
+                        </label>
+                    )}
+                    </div>
+
+                    <div className='profile-save'>
+                    {editor === "false" ? (
+                        <span>Last Name: {lastName}</span>
+                    ) : (
+                        <label>
+                        Enter Last Name:
+                        <input
+                            type="text"
+                            className="profile-input"
+                            placeholder="Enter Last Name"
+                            onChange={(e) => setLastName(e.target.value)}
+                            value={lastName}
+                        />
+                        </label>
+                    )}
+                    </div>
+                {editor==="false" && <button onClick={()=>setEditor(e=>"true")}>Update Profile</button>}
+                {editor==="true" && <button id='profile-save' onClick={() => {if(firstName || lastName){handleSave();setEditor(()=>"false")}}}>Save Changes</button>}
             </div>
             <Footer />
         </div>

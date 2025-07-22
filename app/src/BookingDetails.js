@@ -4,7 +4,7 @@ import Top from './Top.js';
 import Footer from './Footer.js';
 import './BookingDetails.css';
 
-export default function BookingDetails({isLoggedIn, setIsLoggedIn}){
+export default function BookingDetails({isLoggedIn, setIsLoggedIn, setIsProfileUpdated}){
     const [data, setData] = useState([]);
     const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ export default function BookingDetails({isLoggedIn, setIsLoggedIn}){
     });
     return(
         <div>
-            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={''}/>
+            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={''} setIsProfileUpdated={setIsProfileUpdated} />
             <div id='bookings'>
                 {(!data || data.length === 0) ? (
                     <div className="no-bookings">

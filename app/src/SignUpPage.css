@@ -1,105 +1,142 @@
 body {
-    background: #f4f6fa;
+  background: #0f172a; /* same dark background as login */
+  color: #e2e8f0;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.signup-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 60px;
+}
+
+.signup-card {
+  background: #1e293b; /* darker card background */
+  padding: 48px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signup-card h1 {
+  color: #60a5fa; /* match login accent */
+  margin-bottom: 24px;
+  font-size: 2.3rem;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 #signpage-form {
-    background: #fff;
-    max-width: 400px;
-    margin: 48px auto 24px auto;
-    padding: 36px 32px 28px 32px;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.09);
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
 }
 
 #signpage-email,
 #signpage-password {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 6px;
 }
 
 #signpage-form input[type="text"],
 #signpage-form input[type="password"] {
-    padding: 12px 16px;
-    border: 1.5px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
-    background: #f9fafc;
-    color: #222;
-    outline: none;
-    transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+  padding: 14px 16px;
+  width: 90%;
+  max-width: 340px;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #1e293b;
+  color: #e2e8f0;
+  outline: none;
+  transition: all 0.25s ease-in-out;
 }
 
 #signpage-form input[type="text"]:focus,
 #signpage-form input[type="password"]:focus {
-    border: 1.5px solid #1976d2;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  border-color: #60a5fa;
+  background: #1c2c4a;
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
+  transform: scale(1.02);
 }
 
 #signpage-form label {
-    color: #d32f2f;
-    font-size: 0.95rem;
-    min-height: 18px;
-    margin-left: 2px;
+  color: #f87171;
+  font-size: 0.85rem;
+  min-height: 18px;
+  text-align: center;
 }
 
 #signpage-form button {
-    padding: 12px 0;
-    background: #1976d2;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.2s;
+  padding: 14px 24px;
+  width: 90%;
+  max-width: 340px;
+  background: #60a5fa;
+  color: #0f172a;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 #signpage-form button:hover {
-    background: #0d47a1;
+  background: #3b82f6;
+  transform: scale(1.03);
 }
 
 #signpage-google {
-    text-align: center;
-    margin-top: 18px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .google-signup-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #fff;
-    border: 1.5px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 10px 24px;
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: #444;
-    cursor: pointer;
-    transition: border 0.2s, box-shadow 0.2s, background 0.2s;
-    box-shadow: 0 1px 6px rgba(60,64,67,.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #1e293b;
+  border: 1.5px solid #334155;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
 }
 
 .google-signup-btn:hover {
-    border: 1.5px solid #1976d2;
-    background: #f4f8fd;
+  border-color: #60a5fa;
+  background: #2b3a55;
+  transform: scale(1.02);
 }
 
 .google-signup-btn img {
-    vertical-align: middle;
-    margin-right: 6px;
-}
-
-h1 {
-    text-align: center;
-    color: #1976d2;
-    margin-top: 36px;
-    margin-bottom: 0;
-    font-size: 2.1rem;
-    letter-spacing: 1px;
+  vertical-align: middle;
 }

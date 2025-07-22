@@ -2,7 +2,7 @@ import { useState , useEffect , useRef} from 'react' ;
 import {useNavigate} from 'react-router-dom' ;
 import './Top.css';
 
-function Top({isLoggedIn,setIsLoggedIn,redirectPath}){
+function Top({isLoggedIn,setIsLoggedIn,redirectPath,setIsProfileUpdated}){
     const navigate = useNavigate();
     const [isClicked, setIsClicked] = useState(false);
     const searchWrapperRef = useRef(null);
@@ -31,6 +31,7 @@ function Top({isLoggedIn,setIsLoggedIn,redirectPath}){
                     if(res && res.message ==='Logout successful'){
                         console.log('isLoggedIn:', isLoggedIn);
                         setIsLoggedIn(e => false);
+                        setIsProfileUpdated(e => false);
                         console.log('isLoggedIn:', isLoggedIn);
                         alert("Logged out successfully");
                     }else console.log(res.message);

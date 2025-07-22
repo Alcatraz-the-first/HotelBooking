@@ -4,7 +4,7 @@ import { useState , useEffect , useRef } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
 import './Body.css';
 
-function Body({isLoggedIn,setIsLoggedIn}){
+function Body({isLoggedIn,setIsLoggedIn, setIsProfileUpdated}){
     const navigate = useNavigate();
     const location = useLocation();
     
@@ -88,7 +88,7 @@ function Body({isLoggedIn,setIsLoggedIn}){
 
     return(
         <div>
-            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={redirectPath} />
+            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={redirectPath} setIsProfileUpdated={setIsProfileUpdated} />
             <div id='Body-search'>
                 <div className="search-input-wrapper" ref={searchWrapperRef}>
                     <input type="text" placeholder="Destination" onChange={(e) => {setPlace(place => e.target.value); handleSuggestion(place);}} value={place}/>

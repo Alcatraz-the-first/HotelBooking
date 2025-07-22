@@ -66,33 +66,51 @@ export default function SignUpPage({setNav}){
     function handleSignUp(){
         if(isValidEmail(mail) && isValidPassword(pass)) setFlag(e => !e);
     }
-    return(
-        <div>
-            <h1>Sign Up</h1>
-            <div>
-                <div id='signpage-form'>
-                    <div id='signpage-email'>
-                        <input type="text" placeholder='Email' onChange={(e)=>{setMail(mail => e.target.value);isValidEmail(mail);}} required/> <br/>
-                        <label>{mailError}</label> <br/>
-                    </div>
-                    <div id='signpage-password'>
-                        <input type="password" placeholder='Password' onChange={(e)=>{setPass(pass => e.target.value);isValidPassword(pass);}} required/> <br/>
-                        <label>{passError}</label> <br/>
-                    </div>
-                    <button onClick={()=>handleSignUp()}>Signup</button> <br/>
-                </div>
-                <div id='signpage-google'>
-                    <button className="google-signup-btn">
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/250px-Google_Favicon_2025.svg.png"
-                            height="20px"
-                            width="20px"
-                            alt="Google"
-                        />
-                        <span>Sign up with Google</span>
-                    </button>
-                </div>
-            </div>
+   return (
+  <div className="signup-page-container">
+    <div className="signup-card"> {/* ADD THIS WRAPPER */}
+      <h1>Sign Up</h1>
+      <div id="signpage-form">
+        <div id="signpage-email">
+          <input
+            type="text"
+            placeholder="Email"
+            onChange={(e) => {
+              setMail(e.target.value);
+              isValidEmail(e.target.value);
+            }}
+            required
+          />
+          <label>{mailError}</label>
         </div>
-    );
+        <div id="signpage-password">
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => {
+              setPass(e.target.value);
+              isValidPassword(e.target.value);
+            }}
+            required
+          />
+          <label>{passError}</label>
+        </div>
+        <button onClick={handleSignUp}>Create Account</button>
+      </div>
+      <div id="signpage-google">
+        <button className="google-signup-btn">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/250px-Google_Favicon_2025.svg.png"
+            height="20px"
+            width="20px"
+            alt="Google"
+          />
+          <span>Sign up with Google</span>
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
+
 }

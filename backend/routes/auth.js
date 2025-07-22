@@ -42,12 +42,18 @@ router.post('/login', async(req,res) => {
     try{
         const { email, password } = req.body;
         const user = await User.findOne({email: email});
+        var profile_check=false;
         if(!user){
             return res.status(404).json({ message: "User not found" });
         }
         if(!(await user.comparePassword(password))){
             return res.status(400).json({ message: "Invalid credentials" });
         }
+        if((user.firstname!==""||user.firstname!==null||user.firstname!==undefined)&&(user.lastname!==""||user.lastname!==null||user.lastname!==undefined)) 
+            {
+                console.log("user found");
+                profile_check=true;
+            }
         const token = JWT.sign({id:user._id},process.env.JWT_SECRET, {expiresIn : '1h'});
         res.cookie('token' , token ,{
             httpOnly: true ,
@@ -55,7 +61,8 @@ router.post('/login', async(req,res) => {
             sameSite: 'lax',
             path: '/' // or 'none' if using cross-origin requests
         });
-        res.status(200).json({message : "Login successful"}); ;
+        console.log(profile_check);
+        res.status(200).json({message : "Login successful",isProfileUpdated : profile_check}); ;
     }catch(err){
         console.error(err);
         res.status(500).json({ message: "Server error" });

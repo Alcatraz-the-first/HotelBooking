@@ -33,7 +33,7 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn,isProfileUpdated,
                     console.log("User is not authenticated");
                     setIsLoggedIn(e => false);
                 }
-                if(!isLoggedIn) setIsProfileUpdated(e => false);
+                //if(!isLoggedIn) setIsProfileUpdated(e => false);
             })
             .catch(err => {console.error('Error checking authentication:', err);setIsLoggedIn(e => false);});
     },[]);
@@ -101,7 +101,8 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn,isProfileUpdated,
     const rating = hotel && hotel.result && hotel.result.rating ? hotel.result.rating : "Not Available" ;
     return(
         <div>
-            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={redirectPath}/>
+            {console.log(isProfileUpdated)}
+            <Top isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} redirectPath={redirectPath} setIsProfileUpdated={setIsProfileUpdated}/>
             {
                 hotel && hotel.result && (
                     <>

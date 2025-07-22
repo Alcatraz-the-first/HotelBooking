@@ -1,133 +1,132 @@
 .Top-sp1 {
-  background: linear-gradient(90deg, #d1d1d1 60%, #eaeaea 100%);
-  font-size: 22px;
+  background: linear-gradient(90deg, #283e59, #305179); /* lighter blue gradient */
+  font-size: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 90px;
-  width: 100%; 
+  height: 110px;
+  width: 100%;
   box-sizing: border-box;
-  padding: 0 48px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  border-bottom: 1px solid #aaa;
-  letter-spacing: 2px;
+  padding: 0 64px;
+  box-shadow: 0 4px 20px rgba(25, 118, 210, 0.25);
+  border-bottom: 3px solid #1976d2;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 1.5px;
+  z-index: 200;
+  animation: slideDown 0.4s ease-in;
 }
 
-.Top-sp1 b {
-  font-size: 40px;
-  color: #222;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: 3px;
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .Top-logo {
-  height: 150px;
+  height: 130px;
   width: auto;
-  margin-right: 18px;
   object-fit: contain;
-  display: block;
   cursor: pointer;
+  filter: drop-shadow(0 0 6px rgba(144, 202, 249, 0.6));
 }
 
 .Top-login {
   display: flex;
   align-items: center;
   height: 100%;
-  gap: 24px; /* spacing between English and button */
+  gap: 36px;
+  position: relative;
 }
 
 .Top-login span {
-  font-size: 18px;
-  color: #333;
+  font-size: 20px;
+  color: #eaf3ff;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .Top-login span:hover {
-  color: #0074cc; /* subtle accent color on hover */
+  color: #bbdefb;
+  transform: translateY(-2px);
 }
 
 .Top-login button {
-  background: #1976d2;
+  background: linear-gradient(to right, #42a5f5, #1976d2);
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 10px 28px;
-  font-size: 1rem;
+  border-radius: 10px;
+  padding: 12px 30px;
+  font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
-  transition: background 0.18s;
-  margin-left: 8px;
-  height: 42px;
-  min-width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 3px 10px rgba(25, 118, 210, 0.4);
+  transition: background 0.3s, transform 0.2s;
+  height: 48px;
 }
 
 .Top-login button:hover {
   background: #0d47a1;
-}
-
-/* Dropdown profile list styles */
-.profile-list {
-  position: absolute;
-  top: 38px; /* Adjust to icon height + margin */
-  right: 0;
-  background: #fff;
-  border: 1.5px solid #1976d2;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.13);
-  min-width: 170px;
-  padding: 0;
-  margin: 0;
-  z-index: 100;
-  list-style: none;
-  animation: dropdownFade 0.18s ease;
+  transform: scale(1.05);
 }
 
 .top-user-icon {
-  font-size: 1.6rem;
-  color: #222;
+  font-size: 2rem;
+  color: #eaf3ff;
   cursor: pointer;
-  transition: color 0.18s;
+  transition: color 0.2s, transform 0.2s;
 }
 
 .top-user-icon:hover {
-  color: #1976d2;
+  color: #90caf9;
+  transform: scale(1.1);
 }
 
-@keyframes dropdownFade {
-  from { opacity: 0; transform: translateY(-10px);}
-  to { opacity: 1; transform: translateY(0);}
+.profile-list {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  background: #ffffff;
+  border: 1.5px solid #1976d2;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+  padding: 0;
+  margin: 0;
+  z-index: 300;
+  list-style: none;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .profile-item {
-  padding: 14px 22px;
-  font-size: 1rem;
-  color: #222;
+  padding: 16px 24px;
+  font-size: 1.05rem;
+  color: #2a3442;
   cursor: pointer;
-  transition: background 0.18s, color 0.18s;
-  border-bottom: 1px solid #e3eaf5;
+  transition: background 0.2s ease, color 0.2s ease;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-item:hover {
+  background: #e3f2fd;
+  color: #0d47a1;
 }
 
 .profile-item:last-child {
   border-bottom: none;
-}
-
-.profile-item:hover {
-  background: #e3eaf5;
-  color: #1976d2;
-}
-
-/* Make sure Top-login is relative for absolute dropdown */
-.Top-login {
-  position: relative;
-}
-
-.Top-login i:hover {
-  color: #1976d2;
-  cursor: pointer;
 }
