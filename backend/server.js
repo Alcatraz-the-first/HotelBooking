@@ -7,9 +7,11 @@ require('dotenv').config() ;
 const app = express() ;
 const port = process.env.PORT ;
 app.use(cors({
-  origin: 'https://lads-nt69.onrender.com', // <-- your React app's URL
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
   credentials: true,
-  optionsSuccessStatus: 200 // For legacy browser support
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json()) ;
 app.use(cookieParser()) ;
