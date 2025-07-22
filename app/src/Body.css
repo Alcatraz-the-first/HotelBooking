@@ -136,3 +136,65 @@ body {
   font-size: 16px;
   color: #d1d1d1;
 }
+
+/* Mobile responsiveness for Body component */
+@media (max-width: 768px) {
+  #Body-search {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    margin: 16px;
+  }
+  
+  #Body-search input,
+  #Body-search select,
+  #Body-search button {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .search-input-wrapper {
+    width: 100%;
+  }
+  
+  #Body-container {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    margin: 8px 16px;
+  }
+  
+  #Body-img {
+    width: 100%;
+    text-align: center;
+  }
+  
+  #Body-img img {
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
+  }
+  
+  #Body-info {
+    width: 100%;
+    text-align: center;
+  }
+  
+  #Body-info h1 {
+    font-size: 1.4rem;
+  }
+  
+  #Body-info h2 {
+    font-size: 1.1rem;
+  }
+  
+  .suggestion-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+  }
+}

@@ -130,3 +130,48 @@
 .profile-item:last-child {
   border-bottom: none;
 }
+
+/* Mobile responsiveness for Top navigation */
+@media (max-width: 768px) {
+  .Top-sp1 {
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px 16px;
+  }
+  
+  .Top-logo {
+    width: 80px;
+    height: auto;
+  }
+  
+  .Top-login {
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+  }
+  
+  .Top-login span {
+    font-size: 0.9rem;
+  }
+  
+  .Top-login button {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    min-width: 80px;
+  }
+  
+  .profile-list {
+    top: 45px;
+    right: 0;
+    min-width: 140px;
+  }
+  
+  .profile-item {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .top-user-icon {
+    font-size: 1.4rem;
+  }
+}

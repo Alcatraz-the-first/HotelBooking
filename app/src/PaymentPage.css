@@ -57,13 +57,34 @@
     background: #0d47a1;
 }
 
-@media (max-width: 600px) {
-    #bill {
-        max-width: 98vw;
-        padding: 16px 8vw;
-    }
-    #payment button {
-        width: 100%;
-        padding: 14px 0;
-    }
+/* Mobile responsiveness for PaymentPage */
+@media (max-width: 768px) {
+  .payment-page-container {
+    padding: 16px;
+    min-height: 100vh;
+  }
+  
+  #bill {
+    max-width: 95vw;
+    margin: 16px auto;
+    padding: 16px;
+  }
+  
+  .bill-row {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  #payment button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+  
+  /* Fix YouTube iframe popup */
+  .popup iframe {
+    width: 95vw !important;
+    height: 50vh !important;
+    max-width: 350px !important;
+  }
 }
