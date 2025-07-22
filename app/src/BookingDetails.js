@@ -9,7 +9,7 @@ export default function BookingDetails({isLoggedIn, setIsLoggedIn, setIsProfileU
     const navigate = useNavigate();
 
     useEffect(() => {
-            fetch('http://localhost:5000/auth/check',{credentials: 'include'}) // Include credentials to send cookies
+            fetch('https://lads-yjao.onrender.com/auth/check',{credentials: 'include'}) // Include credentials to send cookies
                 .then(res => res.json())
                 .then(res => {
                     if(res && res.authenticated){
@@ -24,7 +24,7 @@ export default function BookingDetails({isLoggedIn, setIsLoggedIn, setIsProfileU
                 .catch(err => {console.error('Error checking authentication:', err);setIsLoggedIn(e=>false);navigate('/login')});
     },[]);
     useEffect(() => {
-        fetch('http://localhost:5000/booking',{credentials: 'include'})
+        fetch('https://lads-yjao.onrender.com/booking',{credentials: 'include'})
             .then(res => res.json())
             .then(res => {
                 if(res && res.length > 0){

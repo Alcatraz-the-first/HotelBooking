@@ -64,7 +64,7 @@
         res.cookie('token' , token ,{
             httpOnly: true , secure: false, // Set to true if using HTTPS
             sameSite: 'lax' // or 'none' if using cross-origin requests});
-    d)  fetch('http://localhost:5000/api/check',{credentials: 'include'})
+    d)  fetch('https://lads-yjao.onrender.com/api/check',{credentials: 'include'})
 
 10/7/25 -
 1.  Well first we will be making different pages for login and signup , when accessing from the home page . And a pop-up from anyother pages .

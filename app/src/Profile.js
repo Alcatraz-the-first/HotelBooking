@@ -11,7 +11,7 @@ export default function Profile({isLoggedIn, setIsLoggedIn , setIsProfileUpdated
     const [editor,setEditor]=useState('false');
 
     useEffect(() => {
-            fetch('http://localhost:5000/auth/check',{credentials: 'include'}) // Include credentials to send cookies
+            fetch('https://lads-yjao.onrender.com/auth/check',{credentials: 'include'}) // Include credentials to send cookies
                 .then(res => res.json())
                 .then(res => {
                     if(res && res.authenticated){
@@ -26,7 +26,7 @@ export default function Profile({isLoggedIn, setIsLoggedIn , setIsProfileUpdated
                 .catch(err => {console.error('Error checking authentication:', err);setIsLoggedIn(e=>false);navigate('/login')});
     },[]);
     useEffect(() => {
-        fetch('http://localhost:5000/profile',{credentials: 'include'}) // Include credentials to send cookies
+        fetch('https://lads-yjao.onrender.com/profile',{credentials: 'include'}) // Include credentials to send cookies
             .then(res => res.json())
             .then(res => {
                 if(res && res.user){
@@ -38,7 +38,7 @@ export default function Profile({isLoggedIn, setIsLoggedIn , setIsProfileUpdated
     },[]);
 
     function handleSave(){
-        fetch('http://localhost:5000/profile/update' , {
+        fetch('https://lads-yjao.onrender.com/profile/update' , {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

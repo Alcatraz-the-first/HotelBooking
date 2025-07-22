@@ -13,7 +13,7 @@ export default function ImageW({array}){
     return (
         <div id='ImageW-container'>
             <div id='image'>
-                <img src={`http://localhost:5000/api/images/${array[pos]}`}/>
+                <img src={`https://lads-yjao.onrender.com/api/images/${array[pos]}`}/>
             </div>
             <div id='ImageW-lbutton'>
                 <button onClick={() => setPos( pos => (pos - 1 + n) % n )}/>

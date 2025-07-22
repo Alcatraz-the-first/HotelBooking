@@ -25,7 +25,7 @@ function Top({isLoggedIn,setIsLoggedIn,redirectPath,setIsProfileUpdated}){
     }
     function handleLogout(){
         if(isLoggedIn){
-            fetch('http://localhost:5000/auth/logout',{credentials: 'include'}) // Include credentials to send cookies
+            fetch('https://lads-yjao.onrender.com/auth/logout',{credentials: 'include'}) // Include credentials to send cookies
                 .then(res => res.json())
                 .then(res => {
                     if(res && res.message ==='Logout successful'){

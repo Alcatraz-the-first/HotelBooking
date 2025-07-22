@@ -23,7 +23,7 @@ export default function PaymentPage() {
         }
     }
     function handlePayment(){
-        fetch(`http://localhost:5000/booking/rooms`, {
+        fetch(`https://lads-yjao.onrender.com/booking/rooms`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

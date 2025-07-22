@@ -14,7 +14,7 @@ export default function LoginPage({isProfileUpdated,setIsProfileUpdated}){
     const redirectPath = new URLSearchParams(location.search).get('redirect') || '/' ;
 
     useEffect(() => {
-        fetch('http://localhost:5000/auth/login',{
+        fetch('https://lads-yjao.onrender.com/auth/login',{
             method: 'POST' ,
             headers: {
                 'Content-Type': 'Application/json',

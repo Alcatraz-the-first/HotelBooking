@@ -46,7 +46,7 @@ function Body({isLoggedIn,setIsLoggedIn, setIsProfileUpdated}){
     },[]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/auth/check',{credentials: 'include'}) // Include credentials to send cookies
+        fetch('https://lads-yjao.onrender.com/auth/check',{credentials: 'include'}) // Include credentials to send cookies
             .then(res => res.json())
             .then(res => {
                 if(res && res.authenticated){
@@ -61,7 +61,7 @@ function Body({isLoggedIn,setIsLoggedIn, setIsProfileUpdated}){
     },[]);
     
     useEffect(() => {
-        fetch(`http://localhost:5000/api/hotels/${cityCode}`)
+        fetch(`https://lads-yjao.onrender.com/api/hotels/${cityCode}`)
         .then(res => res.json())    //rs object is promise . bcoz /api/hotels is an async function
         .then( data => setD1(data))
         .catch(err => console.error('Error fetching hotels:', err));
@@ -76,7 +76,7 @@ function Body({isLoggedIn,setIsLoggedIn, setIsProfileUpdated}){
     }
 
     function handleSuggestion(text){
-        fetch(`http://localhost:5000/api/autocomplete/${text}`)
+        fetch(`https://lads-yjao.onrender.com/api/autocomplete/${text}`)
             .then(res => res.json())
             .then(res => {
                 if(res && res.predictions && res.predictions.map(e => e.structured_formatting.main_text)){
@@ -122,7 +122,7 @@ function Body({isLoggedIn,setIsLoggedIn, setIsProfileUpdated}){
                                     {
                                         hotel.photos && hotel.photos.length > 0 ? (
                                         <img
-                                            src={`http://localhost:5000/api/images/${hotel.photos[0].photo_reference}`}
+                                            src={`https://lads-yjao.onrender.com/api/images/${hotel.photos[0].photo_reference}`}
                                             alt={hotel.name}
                                             style={{ width: '250px', height: 'auto', borderRadius: '10px' }}
                                         />

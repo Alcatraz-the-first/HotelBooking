@@ -23,7 +23,7 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn,isProfileUpdated,
     const imageArray = hotel && hotel.result && hotel.result.photos ? hotel.result.photos.map((photo) => photo.photo_reference) : [] ;
 
     useEffect(() => {
-        fetch('http://localhost:5000/auth/check',{credentials: 'include'})
+        fetch('https://lads-yjao.onrender.com/auth/check',{credentials: 'include'})
             .then(res => res.json())
             .then(res => {
                 if(res && res.authenticated){
@@ -38,7 +38,7 @@ export default function HotelDetails({isLoggedIn,setIsLoggedIn,isProfileUpdated,
             .catch(err => {console.error('Error checking authentication:', err);setIsLoggedIn(e => false);});
     },[]);
     useEffect(() => {
-        fetch(`http://localhost:5000/api/details/${id}`)
+        fetch(`https://lads-yjao.onrender.com/api/details/${id}`)
             .then(res => res.json())
             .then(data => setHotel(data))
             .catch(err => console.error('Error fetching hotel details:', err));
