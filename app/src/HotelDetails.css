@@ -256,3 +256,62 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  #HotelDetail-Top {
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 16px;
+    padding: 20px 16px;
+  }
+  
+  #HotelDetails-image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  #HotelDetails-details h1 {
+    font-size: 1.6rem;
+  }
+  
+  #HotelDetails-details address,
+  #HotelDetails-details p,
+  #HotelDetails-details a {
+    font-size: 0.95rem;
+  }
+  
+  #HotelDetails-payment {
+    flex-direction: column;
+    gap: 12px;
+    margin: 16px;
+    padding: 16px;
+    align-items: stretch; /* Make all elements full width */
+  }
+  
+  #HotelDetails-payment-info {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+  
+  #HotelDetails-payment input,
+  #HotelDetails-payment select,
+  #HotelDetails-payment button {
+    width: 100%;
+    margin: 0 0 8px 0;
+    box-sizing: border-box;
+  }
+  
+  #HotelDetails-review {
+    margin: 16px;
+    padding: 16px;
+  }
+  
+  #HotelDetails-reviewer img {
+    width: 32px;
+    height: 32px;
+  }
+}

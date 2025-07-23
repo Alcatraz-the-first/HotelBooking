@@ -70,21 +70,54 @@ export default function PaymentPage() {
                 <button onClick={() => {handlePayment()}}>Pay Now</button>
             </div>
             {showPopup && (
-                <div className="popup-overlay">
-                    <div className="popup">
-                    <iframe 
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                        style={{
-                        width: window.innerWidth < 768 ? '95vw' : '560px',
-                        height: window.innerWidth < 768 ? '50vh' : '315px',
-                        maxWidth: window.innerWidth < 768 ? '350px' : 'none'
-                        }}
-                        allow="autoplay; encrypted-media" 
-                        allowFullScreen
-                    ></iframe>
-                    <button onClick={() => {setShowPopup(false); navigate('/');}}>
-                        Close
-                    </button>
+                <div className="popup-overlay" style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 9999
+                }}>
+                    <div className="popup" style={{
+                        backgroundColor: '#fff',
+                        padding: '20px',
+                        borderRadius: '12px',
+                        textAlign: 'center',
+                        maxWidth: '90vw',
+                        maxHeight: '90vh',
+                        overflow: 'auto'
+                    }}>
+                        <iframe 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            style={{
+                                width: window.innerWidth < 768 ? '95vw' : '560px',
+                                height: window.innerWidth < 768 ? '50vh' : '315px',
+                                maxWidth: window.innerWidth < 768 ? '320px' : '560px',
+                                border: 'none',
+                                borderRadius: '8px'
+                            }}
+                            allow="autoplay; encrypted-media" 
+                            allowFullScreen
+                        ></iframe>
+                        <br /><br />
+                        <button 
+                            onClick={() => {setShowPopup(false); navigate('/');}} 
+                            style={{
+                                background: '#1976d2',
+                                color: 'white',
+                                border: 'none',
+                                padding: '12px 24px',
+                                borderRadius: '8px',
+                                fontSize: '1rem',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            Close & Go Home
+                        </button>
                     </div>
                 </div>
             )}

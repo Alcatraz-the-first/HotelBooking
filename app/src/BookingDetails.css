@@ -138,4 +138,37 @@ body {
     width: 32px;
     height: 32px;
   }
+
+  #bookings {
+    max-width: 95vw;
+    margin: 20px auto;
+    padding: 16px;
+  }
+  
+  .bookings-table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  
+  .bookings-table th,
+  .bookings-table td {
+    padding: 12px 8px;
+    word-wrap: break-word;
+  }
+  
+  .bookings-table th:first-child,
+  .bookings-table td:first-child {
+    width: 50px;
+    min-width: 50px;
+  }
+  
+  .booking-details-div {
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  
+  .booking-details-div b {
+    font-size: 0.8rem;
+  }
 }
