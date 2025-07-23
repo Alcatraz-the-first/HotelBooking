@@ -18,7 +18,7 @@ export default function App() {
     <div className='backg'>
       <Routes >
         <Route path="/" element={<Body isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setIsProfileUpdated={setIsProfileUpdated}/>} />
-        <Route path="/hotel/:id" element={<HotelDetails isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} isProfileUpdated={isProfileUpdated}  />} />
+        <Route path="/hotel/:id" element={<HotelDetails isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} isProfileUpdated={isProfileUpdated} setIsProfileUpdated={setIsProfileUpdated}/>} />
         <Route path="/login" element={<LoginPage setIsProfileUpdated={setIsProfileUpdated} isProfileUpdated={isProfileUpdated}/> } />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path='/payment/:id' element={<PaymentPage />} />

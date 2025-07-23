@@ -60,6 +60,7 @@ body {
   background-color: #2e3b4e;
   border-radius: 6px;
   max-height: 200px;
+  max-width: 500px;
   overflow-y: auto;
   width: 100%;
   position: absolute;
@@ -155,6 +156,7 @@ body {
   
   .search-input-wrapper {
     width: 100%;
+    position: relative;
   }
   
   #Body-container {
@@ -193,8 +195,13 @@ body {
     top: 100%;
     left: 0;
     right: 0;
+    width: 100%;
     max-height: 200px;
     overflow-y: auto;
-    z-index: 10;
+    z-index: 100;
+    margin: 0;
+    background-color: #2e3b4e;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 }
