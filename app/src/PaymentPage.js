@@ -92,7 +92,7 @@ export default function PaymentPage() {
                         overflow: 'auto'
                     }}>
                         <iframe 
-                            src="https://www.youtube.com/embed/hvL1339luv0?si=Xa1sOBJKF3X3GRmF" 
+                            src="https://www.youtube.com/embed/hvL1339luv0?autoplay=1&mute=0&si=Xa1sOBJKF3X3GRmF" 
                             style={{
                                 width: window.innerWidth < 768 ? '95vw' : '560px',
                                 height: window.innerWidth < 768 ? '50vh' : '315px',
